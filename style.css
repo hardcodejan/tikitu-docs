@@ -1,44 +1,216 @@
-:root {
-  --bg: #fffaf0;
-  --text: #2b2a33;
-  --muted: #5d5b68;
-  --accent: #1f8f85;
-  --line: #eadfc8;
-  --todo-bg: #ffe08a;
+/* Tippitu legal pages — shares the landing's tokens and fonts (site/landing/src/index.css). */
+
+@font-face {
+  font-family: 'Baloo 2';
+  font-style: normal;
+  font-weight: 600 800;
+  font-display: swap;
+  src: url('assets/fonts/baloo-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F,
+    U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Baloo 2';
+  font-style: normal;
+  font-weight: 600 800;
+  font-display: swap;
+  src: url('assets/fonts/baloo-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC,
+    U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url('assets/fonts/nunito-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F,
+    U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url('assets/fonts/nunito-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC,
+    U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root,
+[data-theme='day'] {
+  --bg: #fff8e7;
+  --bg-deep: #ffe8b8;
+  --surface: #ffffff;
+  --surface-shadow: #e8dcc0;
+  --ink: #2b2d42;
+  --ink-soft: rgba(43, 45, 66, 0.68);
+  --primary: #ff9f1c;
+  --accent: #2ec4b6;
+  --accent-deep: #1b998b;
+  --highlight: #ffd166;
+  --line: rgba(43, 45, 66, 0.1);
+  --tint: #e6f7f4;
+  --tint-2: #fff1d0;
+  --todo-bg: #ffd166;
   --todo-text: #3d2c00;
+  --on-accent: #ffffff;
+  color-scheme: light;
 }
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #1c1b22;
-    --text: #f2efe8;
-    --muted: #b9b5c2;
-    --accent: #5fd3c7;
-    --line: #3a3845;
-    --todo-bg: #6b5410;
-    --todo-text: #fff3cf;
-  }
+[data-theme='night'] {
+  --bg: #2e2a5c;
+  --bg-deep: #141238;
+  --surface: #3a3570;
+  --surface-shadow: #1b1838;
+  --ink: #fff8e7;
+  --ink-soft: rgba(255, 248, 231, 0.74);
+  --primary: #ffe9a8;
+  --accent: #ffb054;
+  --accent-deep: #ffc98a;
+  --highlight: #ffc93c;
+  --line: rgba(255, 248, 231, 0.12);
+  --tint: #433d7d;
+  --tint-2: #433d7d;
+  --todo-bg: #ffc93c;
+  --todo-text: #3d2c00;
+  --on-accent: #2e2a5c;
+  color-scheme: dark;
 }
+
 * { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 body {
   margin: 0;
   background: var(--bg);
-  color: var(--text);
-  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background-image: linear-gradient(180deg, var(--bg-deep) 0, var(--bg) 320px);
+  color: var(--ink);
+  font: 17px/1.65 'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
-main { max-width: 720px; margin: 0 auto; padding: 24px 16px 64px; }
-header { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; }
-header a { color: var(--accent); }
-h1 { font-size: 1.9rem; line-height: 1.2; margin: 24px 0 4px; }
-h2 { font-size: 1.25rem; margin: 32px 0 8px; padding-top: 16px; border-top: 1px solid var(--line); }
-h3 { font-size: 1.05rem; margin: 20px 0 4px; }
+.wrap { max-width: 760px; margin: 0 auto; padding: 16px 16px 48px; }
+
+/* Header: logo + language pill, mirrors the landing nav. */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 0 24px;
+}
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  color: var(--ink);
+  font-family: 'Baloo 2', 'Arial Rounded MT Bold', system-ui, sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+.logo img { width: 44px; height: 44px; transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.logo:hover img { transform: rotate(-6deg) scale(1.1); }
+.logo .i { color: var(--accent); }
+.logo-night { display: none; }
+[data-theme='night'] .logo-day { display: none; }
+[data-theme='night'] .logo-night { display: block; }
+
+.lang {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 40px;
+  width: 92px;
+  padding: 4px;
+  border-radius: 999px;
+  background: var(--surface);
+  box-shadow: 0 3px 0 var(--surface-shadow);
+  font-family: 'Baloo 2', 'Arial Rounded MT Bold', system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.lang > * {
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--ink-soft);
+  line-height: 1;
+}
+.lang > a:hover { color: var(--ink); }
+.lang > [aria-current] { background: var(--accent); color: var(--on-accent); }
+
+/* Document card */
+article {
+  background: var(--surface);
+  border-radius: 28px;
+  box-shadow: 0 6px 0 var(--surface-shadow);
+  padding: 28px 22px 36px;
+}
+@media (min-width: 640px) { article { padding: 40px 48px 48px; } }
+
+h1 {
+  font-family: 'Baloo 2', 'Arial Rounded MT Bold', system-ui, sans-serif;
+  font-size: clamp(2rem, 1.5rem + 2.4vw, 2.75rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin: 0 0 6px;
+}
+h2 {
+  font-family: 'Baloo 2', 'Arial Rounded MT Bold', system-ui, sans-serif;
+  font-size: 1.45rem;
+  line-height: 1.2;
+  margin: 36px 0 10px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+h3 {
+  font-family: 'Baloo 2', 'Arial Rounded MT Bold', system-ui, sans-serif;
+  font-size: 1.15rem;
+  margin: 22px 0 6px;
+}
 p, li { overflow-wrap: anywhere; }
-a { color: var(--accent); }
-.meta { color: var(--muted); margin: 0; }
-.summary { background: rgba(31, 143, 133, 0.08); border-radius: 12px; padding: 4px 18px; }
+p { margin: 0 0 14px; }
+ul, ol { padding-left: 22px; margin: 0 0 14px; }
+li { margin: 4px 0; }
+li::marker { color: var(--accent); }
+a { color: var(--accent-deep); font-weight: 700; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+a:hover { color: var(--ink); }
+strong { font-weight: 800; }
+.meta { color: var(--ink-soft); margin: 0 0 22px; font-weight: 600; }
+.summary {
+  background: var(--tint);
+  border-radius: 20px;
+  padding: 16px 22px 8px;
+  margin: 0 0 8px;
+}
+.summary p { margin: 0 0 6px; }
+.summary ul { margin-bottom: 8px; }
 mark.todo { background: var(--todo-bg); color: var(--todo-text); padding: 0 4px; border-radius: 4px; }
-table { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
-th, td { text-align: left; vertical-align: top; padding: 8px; border-bottom: 1px solid var(--line); }
-.cards { list-style: none; padding: 0; display: grid; gap: 12px; }
-.cards a { display: block; padding: 14px 18px; border: 1px solid var(--line); border-radius: 12px; text-decoration: none; font-weight: 600; }
-footer { margin-top: 48px; color: var(--muted); font-size: 0.9rem; }
+table { border-collapse: collapse; width: 100%; font-size: 0.95rem; margin: 0 0 16px; }
+th { font-family: 'Baloo 2', 'Arial Rounded MT Bold', system-ui, sans-serif; font-weight: 700; }
+th, td { text-align: left; vertical-align: top; padding: 10px 8px; border-bottom: 1px solid var(--line); }
+
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 18px;
+  margin-top: 28px;
+  padding: 0 8px;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+footer a { color: var(--ink-soft); }
+footer a:hover { color: var(--ink); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .logo img { transition: none; }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  header, footer { display: none; }
+  article { box-shadow: none; padding: 0; }
+}

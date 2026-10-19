@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hardcodejan.github.io/tikitu-docs/sitemap.xml
